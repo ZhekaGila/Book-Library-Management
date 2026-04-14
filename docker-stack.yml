@@ -1,0 +1,59 @@
+version: "3.8"
+
+services:
+  web:
+    image: app-web:latest
+    ports:
+      - "5000:5000"
+    environment:
+      DATABASE_URL: postgresql://postgres:postgres@db:5432/library
+      FLASK_ENV: development
+    networks:
+      - app-network
+    deploy:
+      replicas: 1
+
+  db:
+    image: postgres:15
+    environment:
+      POSTGRES_USER: postgres
+      POSTGRES_PASSWORD: postgres
+      POSTGRES_DB: library_db
+    volumes:
+      - db_data:/var/lib/postgresql/data
+    networks:
+      - app-network
+    deploy:
+      replicas: 1
+
+  prometheus:
+    image: prom/prometheus
+    ports:
+      - "9090:9090"
+    volumes:
+      - ./prometheus:/etc/prometheus
+    networks:
+      - app-network
+    deploy:
+      replicas: 1
+
+  grafana:
+    image: grafana/grafana
+    ports:
+      - "3000:3000"
+    volumes:
+      - grafana_data:/var/lib/grafana
+    networks:
+      - app-network
+    deploy:
+      replicas: 1
+
+  
+
+networks:
+  app-network:
+    driver: overlay
+
+volumes:
+  db_data:
+  grafana_data:

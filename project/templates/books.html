@@ -1,0 +1,149 @@
+{% extends 'base.html' %}
+{% block content %}
+
+
+<div class="container">
+    <h1 class="my-4">Books</h1>
+
+    <!-- Link to trigger modal -->
+    <button type="button" class="btn btn-success" data-toggle="modal" data-target="#addBookModal">
+        Add New Book
+    </button>
+
+    <!-- Search box -->
+    <input type="text" id="searchInput" class="form-control mb-3" placeholder="Search for books..">
+
+    <!-- Table to list books -->
+    <table class="table table-bordered">
+        <!-- Table header -->
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Author</th>
+                <th>Year Published</th> <!-- New field: Year Published -->
+                <th>Type</th> <!-- New field: Type -->
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <!-- Table body -->
+        <tbody>
+            <!-- Loop through books and display each book -->
+            {% for book in books %}
+            <tr>
+                <td>{{ book.name }}</td>
+                <td>{{ book.author }}</td>
+                <td>{{ book.year_published }}</td> <!-- Display Year Published -->
+                <td>{{ book.book_type }}</td> <!-- Display Book Type -->
+                <td>
+                    <!-- Inside the <td> for "Edit" button -->
+                    <button class="btn btn-warning btn-sm" onclick="editBook({{ book.id }})">Edit</button>
+
+                    <!-- Inside the <td> for "Delete" button -->
+                    <button class="btn btn-danger btn-sm" onclick="deleteBook({{ book.id }})">Delete</button>
+
+
+                </td>
+            </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+</div>
+
+
+<!-- Add Book Modal -->
+<div class="modal fade" id="addBookModal" tabindex="-1" role="dialog" aria-labelledby="addBookModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="addBookModalLabel">Add New Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Add Book Form -->
+                <form id="addBookForm">
+                    <div class="form-group">
+                        <label for="name">Name</label>
+                        <input type="text" class="form-control" id="name" placeholder="Enter book name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="author">Author</label>
+                        <input type="text" class="form-control" id="author" placeholder="Enter author name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="year_published">Year Published</label>
+                        <input type="number" class="form-control" id="year_published" placeholder="Enter year published"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="book_type">Type</label>
+                        <select class="form-control" id="book_type" required>
+                            <option value="2days">2 Days</option>
+                            <option value="5days">5 Days</option>
+                            <option value="10days">10 Days</option>
+                        </select>
+                    </div>
+                    
+                    <button type="submit" class="btn btn-primary">Add Book</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Edit Book Modal -->
+<div class="modal fade" id="editBookModal" tabindex="-1" role="dialog" aria-labelledby="editBookModalLabel"
+    aria-hidden="true">
+    <div class="modal-dialog" role="document">
+        <div class="modal-content">
+            <div class="modal-header">
+                <h5 class="modal-title" id="editBookModalLabel">Edit Book</h5>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                    <span aria-hidden="true">&times;</span>
+                </button>
+            </div>
+            <div class="modal-body">
+                <!-- Edit Book Form -->
+                <form id="editBookForm">
+                    <div class="form-group">
+                        <label for="edit_name">Name</label>
+                        <input type="text" class="form-control" id="edit_name" placeholder="Enter book name" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_author">Author</label>
+                        <input type="text" class="form-control" id="edit_author" placeholder="Enter author name"
+                            required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_year_published">Year Published</label>
+                        <input type="number" class="form-control" id="edit_year_published"
+                            placeholder="Enter year published" required>
+                    </div>
+                    <div class="form-group">
+                        <label for="edit_book_type">Type</label>
+                        <select class="form-control" id="edit_book_type" required>
+                            <option value="2days">2 Days</option>
+                            <option value="5days">5 Days</option>
+                            <option value="10days">10 Days</option>
+                        </select>
+                    </div>
+
+                    <button type="button" class="btn btn-primary" id="saveEditBookButton">Save Changes</button>
+                </form>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+<!-- Include Axios -->
+<script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+
+<!-- Custom JavaScript file (books.js) -->
+<script src="{{ url_for('static', filename='js/books.js') }}"></script>
+
+
+{% endblock %}

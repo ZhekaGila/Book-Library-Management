@@ -1,0 +1,55 @@
+/* Seperated CSS file for books. Adds modularity to the project */
+
+body {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+h1 {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+p {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.form-group {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.table {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
+
+.btn {
+    background-color: rgb(255, 255, 255);
+    color: rgb(255, 255, 255);
+    padding: 20px;
+    margin: 20px;
+    text-align: center;
+    font-family: 'Lucida Sans', 'Lucida Sans Regular', 'Lucida Grande', 'Lucida Sans Unicode', Geneva, Verdana, sans-serif;
+}
